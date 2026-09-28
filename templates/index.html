@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ComicCraft - AI Comic Story Creator</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f3eaff;
+            color: #302044;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 650px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px #d4c3e8;
+        }
+
+        h1 {
+            color: #7c3aed;
+            font-size: 38px;
+        }
+
+        p {
+            color: #665477;
+            font-size: 16px;
+        }
+
+        textarea {
+            width: 95%;
+            height: 150px;
+            padding: 12px;
+            margin-top: 15px;
+            border: 2px solid #c4b5fd;
+            border-radius: 12px;
+            font-size: 16px;
+            resize: vertical;
+        }
+
+        button {
+            background: #7c3aed;
+            color: white;
+            border: none;
+            padding: 14px 25px;
+            margin-top: 20px;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #5b21b6;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>ComicCraft</h1>
+
+        <p>Your imagination, transformed into comics!</p>
+
+        <h3>Enter your story idea</h3>
+
+     
+
+{% if message %}
+    <p style="color: green; font-weight: bold;">
+        {{ message }}
+    </p>
+{% endif %}
+
+<form action="/generate" method="post">
+    <textarea
+        name="story"
+        placeholder="Once upon a time..."
+        required>{{ story }}</textarea>
+
+   
+
+   
+
+
+
+
+        <br>
+
+        
+         <button type="submit">Generate My Comic</button>
+        </form>
+        
+{% if comic %}
+    <div class="comic-result">
+        <h2>Your AI-Generated Comic Story</h2>
+
+        <pre style="white-space: pre-wrap; font-family: inherit;">{{ comic }}</pre>
+    </div>
+{% endif %}
+{% if image_url %}
+    <div class="comic-result">
+        <h2>Your AI-Generated Comic Illustration</h2>
+        <img
+            src="{{ image_url }}"
+            alt="AI-generated comic illustration"
+            style="width: 100%; max-width: 600px; border-radius: 12px;"
+        >
+    </div>
+{% endif %}
+    </div>
+
+</body>
+</html>
+
